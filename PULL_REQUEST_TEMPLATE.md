@@ -2,14 +2,14 @@
 
 Solución al reto:
 
-Nombre:
+Nombre: Lautaro Rivadero 
 Usuario Platzi:
 Correo Electronico:
 
 ## Reto:
 
 - [ X ] Primer problema
-- [ ] Segundo problema
-- [ ] Tercer problema
+- [ X] Segundo problema
+- [ X] Tercer problema
 - [ ] Cuarto Problema
 - [ ] Quinto Problema
