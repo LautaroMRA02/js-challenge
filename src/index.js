@@ -1,16 +1,30 @@
 const $app = document.getElementById('app');
 const $observe = document.getElementById('observe');
 // const API = "https://api.escuelajs.co/api/v1/products";
-const API = (page) => `https://api.escuelajs.co/api/v1/products?offset=${page}&limit=10`;
+const API = (page) => `https://api.escuelajs.co/api/v1/products?offset=${page}&limit=20`;
 
-localStorage.setItem('pagina', 5)
+var pagina = 5
+// localStorage.setItem('pagina', 5)
 
 
 const getData = api => {
   fetch(api)
     .then(response => response.json())
     .then(response => {
-      if (response.length == 0 ) return 
+      if (response.length == 0 ){ 
+        intersectionObserver.unobserve($observe)
+        let newItem = document.createElement('section');
+        newItem.classList.add('Item');
+        newItem.innerHTML += `
+                <article class="Card">
+                      <h2>
+                      Todos los productos Obtenidos
+                      </h2>
+                  </article>
+        `  
+        $app.appendChild(newItem);
+        return 
+      }
       else {
         let products = response;
         console.log(products)
@@ -36,13 +50,12 @@ const getData = api => {
 
 const loadData = async() => {
   setTimeout(()=>{
-    getData(API(localStorage.getItem('pagina')));
+    getData(API(pagina));
     intersectionObserver.observe($observe)
-  },2000)
+  },1000)
 }
 const intersectionObserver = new IntersectionObserver(entries => {
-  let paginaNext = 10 + Number(localStorage.getItem("pagina"))
-  localStorage.setItem("pagina",paginaNext)
+  pagina += 20 
   loadData()
 } );
 
