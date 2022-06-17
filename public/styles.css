@@ -54,3 +54,10 @@ body {
     opacity: 1;
   }
 }
+
+
+#observe{
+  background-color: black;
+  height: 10px;
+  width: 100%;
+}
